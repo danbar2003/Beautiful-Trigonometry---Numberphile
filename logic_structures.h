@@ -2,6 +2,7 @@
 
 #define NUM_OF_LINES 10
 #define CIRCLE_RADIUS 100
+#define FRAME_DEGREE 1
 
 typedef struct Point
 {
@@ -9,12 +10,8 @@ typedef struct Point
 	double y;
 } Point, *pPoint;
 
-typedef struct BasePoint
-{
-	Point point;
-	int radius;
-} BasePoint, *pBasePoint;
-
 void calculate_slopes();
 
-pPoint generate_frames(const pBasePoint const base_point, int nLines);
+pPoint generate_frames(const pPoint const base_point, pPoint point_lst);
+
+void move_base_pointer(const pPoint const base_point);
