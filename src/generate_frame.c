@@ -9,11 +9,10 @@ static double SLOPES[NUM_OF_LINES];
 
 void calculate_slopes()
 {
-	double d;
+	double d = ((double)360 / (NUM_OF_LINES * 2));
 	for (size_t line = 0; line < NUM_OF_LINES; line++)
 	{
-		d = ((double)360 / NUM_OF_LINES * 2);
-		SLOPES[line] = tan(d * M_PI / 180);
+		SLOPES[line] = tan(line * d * M_PI / 180);
 	}
 }
 
