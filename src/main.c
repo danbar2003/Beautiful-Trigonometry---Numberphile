@@ -7,6 +7,8 @@
 
 #include "logic_structures.h"
 
+extern double SLOPES[];
+
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -48,6 +50,21 @@ int main(int argc, char** argv)
 			//draw backround (black screen)
 		SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
 		SDL_RenderClear(render);
+		
+			//draw point's lines
+		SDL_SetRenderDrawColor(render, 255, 0, 255, 255);
+		
+		for (size_t l = 0; l < NUM_OF_LINES; l++)
+		{
+
+			if (l == 0 || l == 1)
+				SDL_RenderDrawLine(render, 512, 384 + CIRCLE_RADIUS, 512, 384 - CIRCLE_RADIUS);
+			else
+			{
+				SDL_RenderDrawLine(render, 512 + CIRCLE_RADIUS * cos(SLOPES[l]), (double)384 + CIRCLE_RADIUS * sin(SLOPES[l]), 512 + -CIRCLE_RADIUS * cos(SLOPES[l]), 384 + -CIRCLE_RADIUS * sin(SLOPES[l]));
+			}
+
+		}
 			
 			//draw the frame
 		SDL_SetRenderDrawColor(render, 0, 255, 0, 255);
@@ -56,6 +73,10 @@ int main(int argc, char** argv)
 			SDL_Rect rect = { 512 + point_lst[p].x, 384 + point_lst[p].y, 10, 10 };
 			SDL_RenderDrawRect(render, &rect);
 		}
+		SDL_SetRenderDrawColor(render, 0, 255, 255, 255);
+		SDL_Rect rect = { 512 + base_point.x, 384 + base_point.y, 20,20 };
+		SDL_RenderDrawRect(render, &rect);
+
 		//draw the changes
 		SDL_RenderPresent(render);
 		//move the base point for the next frame

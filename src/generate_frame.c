@@ -5,7 +5,7 @@
 #include <math.h>
 
 #include <stdio.h>
-static double SLOPES[NUM_OF_LINES];
+double SLOPES[NUM_OF_LINES];
 
 void calculate_slopes()
 {

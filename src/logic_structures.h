@@ -1,6 +1,6 @@
 #pragma once
 
-#define NUM_OF_LINES 20
+#define NUM_OF_LINES 30
 #define CIRCLE_RADIUS 300
 #define FRAME_DEGREE 1
 
